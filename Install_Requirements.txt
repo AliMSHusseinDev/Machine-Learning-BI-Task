@@ -1,29 +1,45 @@
-Housing HPI forecast | Windows setup
+Housing HPI Forecast | Windows Setup
 
-1. Extract the whole ZIP. Open PowerShell in the folder that contains
-   Housing_HPI_Forecast.ipynb and requirements.txt. Install Python 3.12 first
-   if it is missing.
+1. Open the project folder
+   Extract the whole ZIP. Open the folder that contains Housing_HPI_Forecast.ipynb
+   and requirements.txt. Click the File Explorer address bar, type powershell,
+   and press Enter.
 
-2. Run these commands one at a time.
+2. Set up Python once
+   Install Python 3.12 with the Windows Python launcher if needed.
+   Run these commands one at a time. Wait for each command to finish.
+   The first command creates an environment in a short folder path.
 
-   py -3.12 -m venv .venv
-   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-   .\.venv\Scripts\python.exe -m jupyter lab
+   py -3.12 -m venv "$env:LOCALAPPDATA\hpi"
+   & "$env:LOCALAPPDATA\hpi\Scripts\python.exe" -m pip install -r .\requirements.txt
 
-3. Open Housing_HPI_Forecast.ipynb in JupyterLab and use the Python kernel.
-   If you use VS Code, select .venv as the notebook kernel.
+   If the install shows ERROR, fix that error before moving to step 3.
 
-4. Select the top cell. Press Shift + Enter to run it and move to the next cell.
-   Repeat in order. The notebook reads the Excel workbook in Dataset.
+3. Open the notebook in your browser
+   Run this command from the project folder each time you want to open it.
 
-5. Each output folder starts empty.
-   Loader/Excel_Run gets four CSV files, in this order.
+   & "$env:LOCALAPPDATA\hpi\Scripts\python.exe" -m jupyterlab .\Housing_HPI_Forecast.ipynb
+
+   Keep PowerShell open while you work. If the browser does not open,
+   copy the full localhost or 127.0.0.1 link from PowerShell into your browser.
+   If you use VS Code, select the Python kernel from the hpi environment.
+
+4. Run the cells
+   Select the first cell and press Shift + Enter. Repeat from top to bottom.
+   The notebook reads the Excel workbook in Dataset.
+
+5. Find your results
+   The output folders start with no CSV files or charts.
+   Each cell that saves a file shows its name and folder.
+
+   Loader/Excel_Run
      ML_Training.csv             Training rows
      ML_Test_Predictions.csv     Test predictions and actual values
      ML_Train_Test_Metrics.csv   Training and test scores
-     ML_Predictions.csv          Test predictions and forecasts for 2017 Q1
-   Loader/Figures gets one PNG for each chart you run.
+     ML_Predictions.csv          Test predictions and 2017 Q1 forecasts
+
+   Loader/Figures contains one PNG for each chart you run.
    Report contains the PDF report.
 
-   Running a cell again replaces its output file. Close the CSV in Excel
-   before running that cell again.
+   Running a cell again replaces its output file. If the CSV is open in
+   Excel, close it before running that cell again.
