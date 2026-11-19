@@ -1,0 +1,29 @@
+Housing HPI forecast | Windows setup
+
+1. Extract the whole ZIP. Open PowerShell in the folder that contains
+   Housing_HPI_Forecast.ipynb and requirements.txt. Install Python 3.12 first
+   if it is missing.
+
+2. Run these commands one at a time.
+
+   py -3.12 -m venv .venv
+   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+   .\.venv\Scripts\python.exe -m jupyter lab
+
+3. Open Housing_HPI_Forecast.ipynb in JupyterLab and use the Python kernel.
+   If you use VS Code, select .venv as the notebook kernel.
+
+4. Select the top cell. Press Shift + Enter to run it and move to the next cell.
+   Repeat in order. The notebook reads the Excel workbook in Dataset.
+
+5. Each output folder starts empty.
+   Loader/Excel_Run gets four CSV files, in this order.
+     ML_Training.csv             Training rows
+     ML_Test_Predictions.csv     Test predictions and actual values
+     ML_Train_Test_Metrics.csv   Training and test scores
+     ML_Predictions.csv          Test predictions and forecasts for 2017 Q1
+   Loader/Figures gets one PNG for each chart you run.
+   Report contains the PDF report.
+
+   Running a cell again replaces its output file. Close the CSV in Excel
+   before running that cell again.
